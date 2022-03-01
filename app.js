@@ -11,7 +11,7 @@ const url = `https://openapi.programming-hero.com/api/phones?search=${searchText
 fetch(url)
 .then((res) => res.json())
 .then((data) => displayPhones(data.data));
-// reset display
+
 spinner.style.display = "block";
 searchField.value = "";
 phoneDetails.textContent = "";
@@ -26,9 +26,7 @@ const displayPhones = (phones) => {
         phoneContainer.textContent = "";
         spinner.innerText = 'Loading...';
 
-        // test //
         for(i = 0; i < phones.length; i++){
-            console.log(phones[i], phones.length)
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
@@ -43,13 +41,12 @@ const displayPhones = (phones) => {
             `;
             phoneContainer.appendChild(div);
 
-           if (i == 19) {    
+           if (i === 19) {    
                break;
            }
         }   
       spinner.style.display = "none";
-    }
-      
+    }   
 };
 
 // Load Phone Details
@@ -64,10 +61,9 @@ const loadDetails = (info) =>{
 const displayDetails = (details) =>{
     phoneDetails.textContent = "";
     const div = document.createElement('div');
-    div.classList.add('w-75', 'mx-auto');
-
+    div.classList.add('w-50', 'mx-auto');
     const mainFeatures = `
-    <img src="${details.image}" alt="" class="card-img-top d-block mx-auto mb-3" style="width: 300px;>
+    <img src="${details.image}" alt="" class="card-img-top d-block mx-auto mb-3" style="max-width: 300px;">
     <h2>${details.name}</h2>
     <p class="text-muted">${details.releaseDate ? details.releaseDate : "No release date found"}</p><br>
     <p class="text-danger fw-bold">Main Features</p>
@@ -76,6 +72,7 @@ const displayDetails = (details) =>{
     <p><span class="fw-bold">Memory:</span> ${details.mainFeatures.memory}</p>
     <p><span class="fw-bold">Sensors:</span> ${details.mainFeatures.sensors.join(", ")}</p><br>
     `;
+
     if(!details.others){
         div.innerHTML = `${mainFeatures}`
 
@@ -92,6 +89,5 @@ const displayDetails = (details) =>{
         `;
     }
     phoneDetails.appendChild(div);
-    
 
 }
