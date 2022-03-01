@@ -33,7 +33,7 @@ const displayPhones = (phones) => {
             div.classList.add('col');
             div.innerHTML = `
                             <div class="card">
-                                <img src="${phones[i].image}" alt="" class="card-img-top w-75 mx-auto">
+                                <img src="${phones[i].image}" alt="" class="card-img-top w-50 mx-auto">
                                 <div class="card-body text-center">
                                     <h3 class="card-title">${phones[i].phone_name}</h3>
                                     <h5>${phones[i].brand}</h5>
@@ -64,9 +64,10 @@ const loadDetails = (info) =>{
 const displayDetails = (details) =>{
     phoneDetails.textContent = "";
     const div = document.createElement('div');
-    div.classList.add('w-50', 'mx-auto');
+    div.classList.add('w-75', 'mx-auto');
 
     const mainFeatures = `
+    <img src="${details.image}" alt="" class="card-img-top d-block mx-auto mb-3" style="width: 300px;>
     <h2>${details.name}</h2>
     <p class="text-muted">${details.releaseDate ? details.releaseDate : "No release date found"}</p><br>
     <p class="text-danger fw-bold">Main Features</p>
