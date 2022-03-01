@@ -14,7 +14,26 @@
 </head>
 <body>
     <main class="container">
-        
+        <h1 class="text-center my-3">Phone <span class="text-danger">Mania</span></h1>
+
+         <!-- Search Box -->
+         <div class="input-group my-5 w-50 m-auto">
+            <input id="search-box" type="text" class="form-control" placeholder="Search Your Phone" aria-label="Search"
+                aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <span class="input-group-text" id="search-btn" role="button" onclick="loadPhones()">Search</span>
+            </div>
+        </div>
+
+        <!-- Loading... -->
+        <div id="spinner">
+            <img class="w-50 mx-auto d-block img-fluid" src="#" alt="">
+        </div>
+
+        <!-- Show Search Results -->
+        <div id="result-container">
+            
+        </div>
     </main>
     
     <!-- Bootstrap JS -->
