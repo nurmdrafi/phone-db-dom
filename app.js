@@ -1,6 +1,7 @@
 // Global Variables
-const phoneContainer = document.getElementById('phones-container');
 const spinner = document.getElementById('spinner');
+const phoneContainer = document.getElementById('phones-container');
+const phoneDetails = document.getElementById('phone-details');
 
 // Load Phone Data from API
 const loadPhones = () => {
@@ -10,8 +11,10 @@ const url = `https://openapi.programming-hero.com/api/phones?search=${searchText
 fetch(url)
 .then((res) => res.json())
 .then((data) => displayPhones(data.data));
+// reset display
 spinner.style.display = "block";
 searchField.value = "";
+phoneDetails.textContent = "";
 };
 
 // Display Phones
@@ -21,22 +24,29 @@ const displayPhones = (phones) => {
         phoneContainer.textContent = "";
     } else{
         phoneContainer.textContent = "";
-        spinner.innerText = 'Loading...'
-        phones.forEach(phone =>{
+        spinner.innerText = 'Loading...';
+
+        // test //
+        for(i = 0; i < phones.length; i++){
+            console.log(phones[i], phones.length)
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
                             <div class="card">
-                                <img src="${phone.image}" alt="" class="card-img-top w-75 mx-auto">
+                                <img src="${phones[i].image}" alt="" class="card-img-top w-75 mx-auto">
                                 <div class="card-body text-center">
-                                    <h3 class="card-title">${phone.phone_name}</h3>
-                                    <h5>${phone.brand}</h5>
-                                    <button class="btn btn-primary" onclick="loadDetails('${phone.slug}')">Details</button>
+                                    <h3 class="card-title">${phones[i].phone_name}</h3>
+                                    <h5>${phones[i].brand}</h5>
+                                    <button class="btn btn-primary" onclick="loadDetails('${phones[i].slug}')">Details</button>
                                 </div>
                             </div>
             `;
             phoneContainer.appendChild(div);
-      })
+
+           if (i == 19) {    
+               break;
+           }
+        }   
       spinner.style.display = "none";
     }
       
@@ -52,7 +62,6 @@ const loadDetails = (info) =>{
 
 // Display Phone Details
 const displayDetails = (details) =>{
-    const phoneDetails = document.getElementById('phone-details');
     phoneDetails.textContent = "";
     const div = document.createElement('div');
     div.classList.add('w-50', 'mx-auto');
