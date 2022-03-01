@@ -43,26 +43,22 @@ const displayDetails = (details) =>{
     phoneDetails.textContent = "";
     const div = document.createElement('div');
     div.classList.add('w-50', 'mx-auto');
+    
+    const mainFeature = `
+    <h2>${details.name}</h2>
+    <p class="text-muted">${details.releaseDate ? details.releaseDate : "No release date found"}</p><br>
+    <p class="text-danger fw-bold">Main Features</p>
+    <p><span class="fw-bold">ChipSet:</span> ${details.mainFeatures.chipSet}</p>
+    <p><span class="fw-bold">Display Size:</span> ${details.mainFeatures.displaySize}</p>
+    <p><span class="fw-bold">Memory:</span> ${details.mainFeatures.memory}</p>
+    <p><span class="fw-bold">Sensors:</span> ${details.mainFeatures.sensors.join(", ")}</p><br>
+    `;
     if(!details.others){
-    div.innerHTML = `
-        <h2>${details.name}</h2>
-        <p class="text-muted">${details.releaseDate ? details.releaseDate : "No release date found"}</p><br>
-        <p class="text-danger fw-bold">Main Features</p>
-        <p><span class="fw-bold">ChipSet:</span> ${details.mainFeatures.chipSet}</p>
-        <p><span class="fw-bold">Display Size:</span> ${details.mainFeatures.displaySize}</p>
-        <p><span class="fw-bold">Memory:</span> ${details.mainFeatures.memory}</p>
-        <p><span class="fw-bold">Sensors:</span> ${details.mainFeatures.sensors.join(", ")}</p><br>
-        `;
+        div.innerHTML = `${mainFeature}`
 
     } else if(details.others){
         div.innerHTML = `
-        <h2>${details.name}</h2>
-        <p class="text-muted">${details.releaseDate ? details.releaseDate : "No release date found"}</p><br>
-        <p class="text-danger fw-bold">Main Features</p>
-        <p><span class="fw-bold">ChipSet:</span> ${details.mainFeatures.chipSet}</p>
-        <p><span class="fw-bold">Display Size:</span> ${details.mainFeatures.displaySize}</p>
-        <p><span class="fw-bold">Memory:</span> ${details.mainFeatures.memory}</p>
-        <p><span class="fw-bold">Sensors:</span> ${details.mainFeatures.sensors.join(", ")}</p><br>
+        ${mainFeature}
         <p class="text-danger fw-bold">Other Features</p>
         <p><span class="fw-bold">Bluetooth:</span> ${details.others.Bluetooth}</p>
         <p><span class="fw-bold">GPS:</span> ${details.GPS}</p>
