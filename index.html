@@ -23,31 +23,16 @@
             <input id="search-box" type="text" class="form-control" placeholder="Search Your Phone" aria-label="Search"
                 aria-describedby="basic-addon2">
             <div class="input-group-append">
-                <span class="input-group-text" id="search-btn" role="button" onclick="loadPhones()">Search</span>
+                <span class="input-group-text btn btn-outline-danger" id="search-btn" role="button" onclick="loadPhones()">Search</span>
             </div>
         </div>
 
         <!-- Loading... -->
-        <div id="spinner">
-            <img class="w-50 mx-auto d-block img-fluid" src="#" alt="">
-        </div>
-
+            <p id="spinner" class="text-center">Loading...</p>
+        
         <!-- Phone Details -->
         <div id="phone-details" class="w-75 mx-auto">
-            <!-- <h2>${details.name}</h2>
-            <p class="text-muted">${details.releaseDate}</p><br>
-            <p class="text-danger fw-bold">Main Features</p>
-            <p><span class="fw-bold">ChipSet:</span> ${details.mainFeatures.chipSet}</p>
-            <p><span class="fw-bold">Display Size:</span> ${details.mainFeatures.displaySize}</p>
-            <p><span class="fw-bold">Memory:</span> ${details.mainFeatures.memory}</p>
-            <p><span class="fw-bold">Sensors:</span> ${details.mainFeatures.sensors.join(", ")}</p><br>
-            <p class="text-danger fw-bold">Other Features</p>
-            <p><span class="fw-bold">Bluetooth:</span> ${details.others.Bluetooth}</p>
-            <p><span class="fw-bold">GPS:</span> ${details.GPS}</p>
-            <p><span class="fw-bold">NFC:</span> ${details.others.NFC}</p>
-            <p><span class="fw-bold">Radio:</span> ${details.others.Radio}</p>
-            <p><span class="fw-bold">USB:</span> ${details.USB}</p>
-            <p><span class="fw-bold">WLAN:</span> ${details.others.WLAN}</p> -->
+           
         </div>
         <!-- Show Search Results -->
         <div id="phones-container" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
