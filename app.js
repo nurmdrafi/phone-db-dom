@@ -26,25 +26,25 @@ const displayPhones = (phones) => {
         phoneContainer.textContent = "";
         spinner.innerText = 'Loading...';
 
-        for(i = 0; i < phones.length; i++){
+        // 1st 20 result
+        phones.slice(0, 20).forEach(phone =>{
+            console.log(phone, phones.length);
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
                             <div class="card">
-                                <img src="${phones[i].image}" alt="${phones[i].phone_name}" class="card-img-top w-50 mx-auto">
+                                <img src="${phone.image}" alt="${phone.phone_name}" class="card-img-top w-50 mx-auto">
                                 <div class="card-body text-center">
-                                    <h3 class="card-title">${phones[i].phone_name}</h3>
-                                    <h5>${phones[i].brand}</h5>
-                                    <a href="#" class="btn btn-primary" onclick="loadDetails('${phones[i].slug}')">Details</a>
+                                    <h3 class="card-title">${phone.phone_name}</h3>
+                                    <h5>${phone.brand}</h5>
+                                    <a href="#" class="btn btn-primary" onclick="loadDetails('${phone.slug}')">Details</a>
                                 </div>
                             </div>
             `;
-            phoneContainer.appendChild(div);
-
-           if (i === 19) {    
-               break;
-           }
-        }   
+            phoneContainer.appendChild(div);    
+        })
+        
+  
       spinner.style.display = "none";
     }   
 };
@@ -81,10 +81,10 @@ const displayDetails = (details) =>{
         ${mainFeatures}
         <p class="text-danger fw-bold">Other Features</p>
         <p><span class="fw-bold">Bluetooth:</span> ${details.others.Bluetooth}</p>
-        <p><span class="fw-bold">GPS:</span> ${details.GPS}</p>
+        <p><span class="fw-bold">GPS:</span> ${details.others.GPS}</p>
         <p><span class="fw-bold">NFC:</span> ${details.others.NFC}</p>
         <p><span class="fw-bold">Radio:</span> ${details.others.Radio}</p>
-        <p><span class="fw-bold">USB:</span> ${details.USB}</p>
+        <p><span class="fw-bold">USB:</span> ${details.others.USB}</p>
         <p><span class="fw-bold">WLAN:</span> ${details.others.WLAN}</p>
         `;
     }
