@@ -28,7 +28,6 @@ const displayPhones = (phones) => {
 
         // 1st 20 result
         phones.slice(0, 20).forEach(phone =>{
-            console.log(phone, phones.length);
             const div = document.createElement('div');
             div.classList.add('col');
             div.innerHTML = `
@@ -44,7 +43,6 @@ const displayPhones = (phones) => {
             phoneContainer.appendChild(div);    
         })
         
-  
       spinner.style.display = "none";
     }   
 };
