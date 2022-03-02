@@ -35,7 +35,7 @@ const displayPhones = (phones) => {
                                 <div class="card-body text-center">
                                     <h3 class="card-title">${phones[i].phone_name}</h3>
                                     <h5>${phones[i].brand}</h5>
-                                    <button class="btn btn-primary" onclick="loadDetails('${phones[i].slug}')">Details</button>
+                                    <a href="#" class="btn btn-primary" onclick="loadDetails('${phones[i].slug}')">Details</a>
                                 </div>
                             </div>
             `;
